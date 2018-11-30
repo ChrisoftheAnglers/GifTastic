@@ -17,15 +17,25 @@
     <script src="main.js"></script>
 </head> 
 <body>
-    <div class="container">
-        <div id="buttons">
+    <header class="pt-1 pb-1 container-fluid">
+            <h1 class="text-center">Giftastic!</h1>
+    </header>
+    <div class="container-fluid">
+        <div id="buttons" class="mb-2">
         
         </div>
-        <form id="categoryForm">
-            <label for="categoryInput">Add a new button of your choosing: </label>
-            <input type="text" id="categoryInput">
-            <input type="submit" id="newButton" value="Add Category">
-        </form>
+        <div class="row">
+            <section class="col-6 text-center">
+                <form id="categoryForm" class="mb-3">
+                    <label for="categoryInput" class="font-weight-bold">Add a new button of your choosing: </label>
+                    <input type="text" id="categoryInput">
+                    <input type="submit" class="btn btn-success btn-sm" id="newButton" value="Add Category">
+                </form>
+            </section>
+            <section class="col-6 text-center">
+                <button class="btn btn-lg btn-danger" id="moar">Click for MOAR GIFs (no screen clearing)</button>
+            </section>
+        </div>
         <div id="gifs">
 
         </div>

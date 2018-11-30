@@ -1,13 +1,15 @@
 $(document).ready(function () {
     //Initial Global Variables
     var categories = ["cats", "Spongebob", "memes", "Monty Python and the Holy Grail"]; //Category strings assigned which will be used for buttons
+    var moar = false; //Toggle state variable for whether to clear gifs on button or add them to the current ones
 
     //Functions (non-event) listed below
     function requestGifs() { //Gets the gifs sets selected using the buttons
         var category= $(this).attr("data-category");
         var apiKey = "cshCx2Zj2tK3wyiWf5Ms9XYBmbWrTECp"; //The API Key (make sure to keep this in a separate file in the future)
-        $("#gifs").empty(); //Clear previous GIFs from screen when a new set is requested
-
+        if (!moar) { //Now the gifs won't be emptied if 
+            $("#gifs").empty(); //Clear previous GIFs from screen when a new set is requested
+        }
          //This stores the URL with the search term inserted into the search parameter and limit=10 inserted to request only 10 search items
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + category + "&api_key=" + apiKey + "&limit=10";
         $.ajax({
@@ -33,6 +35,7 @@ $(document).ready(function () {
         for (i=0; i<categories.length; i++) {
             var b = $("<button>");
             b.addClass("category");
+            b.addClass("btn btn-primary m-1");
             b.attr("data-category", categories[i]);
             b.text(categories[i]);
             $("#buttons").append(b); //Appends button elements defined above to the #buttons div
@@ -52,6 +55,25 @@ $(document).ready(function () {
     })
 
     $(document).on("click", ".category", requestGifs);
+
+    $("#moar").click(function() { //Toggle for conditional to add MOAR buttons instead of clearing
+        if(moar===false) {
+            moar=true;
+            $("#moar").removeClass("btn-danger");
+            $("#moar").removeClass("btn-lg");
+            $("#moar").addClass("btn-sm");
+            $("#moar").addClass("btn-warning");
+            $("#moar").text("Less Buttons?");
+        }
+        else {
+            moar=false;
+            $("#moar").addClass("btn-danger");
+            $("#moar").addClass("btn-lg");
+            $("#moar").removeClass("btn-sm");
+            $("#moar").removeClass("btn-warning");
+            $("#moar").text("Click for MOAR GIFs (no screen clearing)");
+        }
+    })
 
     //Function for changing gif from still to animate on click
     $(document).on("click", ".gif", function() {

@@ -1,0 +1,21 @@
+.gif {
+    margin: 2px;
+}
+
+#moar {
+    margin: -10px;
+}
+
+h1 {
+    font-size: 56px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(15, 51, 51);
+}
+
+header {
+    background-color: rgb(175, 168, 106);
+}
+
+html,body {
+    background-color: lightgoldenrodyellow;
+}
