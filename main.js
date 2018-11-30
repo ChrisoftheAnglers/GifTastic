@@ -19,13 +19,19 @@ $(document).ready(function () {
             console.log(response);
             var gifs = response.data; //Stores the array containing objects which contain various versions of the gifs we requested
             for (i=0; i<gifs.length; i++) {
+                var gifDiv = $("<div>");
+                gifDiv.addClass("gifDiv");
                 var gif = $("<img>");
+                var rating = $("<p>");
+                rating.text("rating: " + gifs[i].rating);
                 gif.addClass("gif"); //This will be used later so we can reference images on click
                 gif.attr("src", gifs[i].images.fixed_height_still.url); //Retrieves GIF with fixed height that is not animated
                 gif.attr("data-still", gifs[i].images.fixed_height_still.url); //Stores the URL for still image in data attribute
                 gif.attr("data-animate", gifs[i].images.fixed_height.url); //Stores animated GIF URL in data attribute for later use
                 gif.attr("data-state", "still") //Creates state with string "still" on initialization which will be checked later
-                $("#gifs").append(gif); //Appends our finished elements to the #gifs div
+                $("#gifs").append(gifDiv);
+                $(gifDiv).append(gif); //Appends our finished elements to the #gifs div
+                $(gifDiv).append(rating);
             }
         });
     }

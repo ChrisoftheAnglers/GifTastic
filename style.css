@@ -1,5 +1,6 @@
-.gif {
+.gifDiv {
     margin: 2px;
+    display: inline-block;
 }
 
 #moar {
